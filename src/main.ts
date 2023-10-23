@@ -8,10 +8,14 @@ import * as cors from "cors";
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-app.use(cors({
-  origin: 'https://wareg.site',
-  credentials: true,
-}));
+  app.use(cors({
+    origin: [
+      'https://wareg.site', 
+      'http://localhost:3000'  
+    ],
+    credentials: true,
+  }));
+  
 
 
   const config = new DocumentBuilder()
